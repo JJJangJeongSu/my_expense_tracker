@@ -27,7 +27,10 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(context) {
     return MaterialApp(
       theme: ThemeData(
+          cardTheme: CardTheme().copyWith(
+              margin: EdgeInsets.symmetric(vertical: 8, horizontal: 10)),
           textTheme: TextTheme().copyWith(
+              titleLarge: TextStyle(fontSize: 24),
               titleMedium: TextStyle(fontSize: 20),
               titleSmall: TextStyle(fontSize: 16))),
       home: Scaffold(

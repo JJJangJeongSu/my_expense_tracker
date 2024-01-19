@@ -3,8 +3,8 @@ import 'package:my_expense_tracker/model/expense.dart';
 import 'expense_item.dart';
 
 class ExpenseList extends StatefulWidget {
-  ExpenseList({super.key, required this.expenseList});
-  List<Expense> expenseList;
+  const ExpenseList({super.key, required this.expenseList});
+  final List<Expense> expenseList;
 
   @override
   State<ExpenseList> createState() {

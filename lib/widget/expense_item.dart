@@ -29,7 +29,10 @@ class ExpenseItem extends StatelessWidget {
           const Spacer(),
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
-            child: Text(expense.amount.toString()),
+            child: Text(
+              "\$${expense.amount.toStringAsFixed(2)}",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
           ),
         ]),
       ),
