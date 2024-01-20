@@ -3,6 +3,7 @@ import 'package:my_expense_tracker/model/category.dart';
 import 'package:my_expense_tracker/widget/expense_adder.dart';
 import 'package:my_expense_tracker/widget/expense_list.dart';
 import 'package:my_expense_tracker/model/expense.dart';
+import 'package:my_expense_tracker/widget/pie_chart.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -50,7 +51,12 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ],
       ),
-      body: Column(children: [ExpenseList(expenseList: _registeredExpenses)]),
+      body: Column(children: [
+        PieChartViewer(
+          curExpenseList: _registeredExpenses,
+        ),
+        ExpenseList(expenseList: _registeredExpenses)
+      ]),
     );
   }
 }
