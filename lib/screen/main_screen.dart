@@ -15,11 +15,11 @@ class _MainScreenState extends State<MainScreen> {
   void _showExpenseAdder() {
     showModalBottomSheet(
         context: context,
-        builder: (context) => ExpenseAdder(),
+        builder: (context) => ExpenseAdder(addNewExpense: addExpense),
         isScrollControlled: true);
   }
 
-  void _addExpense(Expense newExpense) {
+  void addExpense(Expense newExpense) {
     setState(() {
       _registeredExpenses.add(newExpense);
     });

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:my_expense_tracker/model/category.dart';
+import 'package:my_expense_tracker/model/expense.dart';
 
 class ExpenseAdder extends StatefulWidget {
+  ExpenseAdder({super.key, required this.addNewExpense});
+
+  void Function(Expense newExpense) addNewExpense;
+
   @override
   State<ExpenseAdder> createState() {
     return _ExpenseAdderState();
@@ -35,7 +40,11 @@ class _ExpenseAdderState extends State<ExpenseAdder> {
   void _onPressSave() {
     final inputFieldIsValid = _titleController.text.trim() != "" &&
         double.tryParse(_amountController.text)! > 0;
-    if (_selectedDate == null && !inputFieldIsValid) {
+
+    print(double.tryParse(_amountController.text));
+    print(inputFieldIsValid);
+
+    if (_selectedDate == null || !inputFieldIsValid) {
       showDialog(
           context: context,
           builder: (context) {
@@ -51,7 +60,15 @@ class _ExpenseAdderState extends State<ExpenseAdder> {
               ],
             );
           });
+      return;
     }
+
+    widget.addNewExpense(Expense(
+        title: _titleController.text,
+        amount: double.parse(_amountController.text),
+        category: _selectedCategory,
+        date: _selectedDate!));
+    Navigator.pop(context);
   }
 
   @override
@@ -93,7 +110,8 @@ class _ExpenseAdderState extends State<ExpenseAdder> {
                       ? "No date selected"
                       : DateFormat("yyyy/MM/dd").format(_selectedDate!)),
                   IconButton(
-                      onPressed: _selectDate, icon: Icon(Icons.calendar_month))
+                      onPressed: _selectDate,
+                      icon: const Icon(Icons.calendar_month))
                 ],
               )
             ],
