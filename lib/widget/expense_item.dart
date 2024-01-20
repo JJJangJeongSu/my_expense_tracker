@@ -23,7 +23,10 @@ class ExpenseItem extends StatelessWidget {
                 expense.title,
                 style: Theme.of(context).textTheme.titleMedium,
               ),
-              Text(expense.formattedDate),
+              Text(
+                expense.formattedDate,
+                style: Theme.of(context).textTheme.titleSmall,
+              ),
             ]),
           ),
           const Spacer(),

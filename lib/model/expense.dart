@@ -18,6 +18,6 @@ class Expense {
   }
 
   String get formattedDate {
-    return DateFormat("yyyy/mm/dd").format(date);
+    return DateFormat("y/MM/DD").format(date);
   }
 }
